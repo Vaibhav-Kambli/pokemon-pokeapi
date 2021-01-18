@@ -1,38 +1,110 @@
 .App {
   text-align: center;
+  background-repeat: no-repeat;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(18,55,83,1) 61%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html{
+  background-repeat: no-repeat;
+  background:  rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(18,55,83,1) 61%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+h4{
+  font-family: Raleway;
+  padding: 1rem 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.app__logo img {
+  margin-top: 5px;
+  width: 200px;
+  height: 100px;
+}
+
+.app_spinner {
+  background: transparent #ffffff;
+}
+
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding:  30px;
+}
+
+.cards {
+  margin-left: 20px;
+  display: grid;
+  margin-top: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  cursor: pointer;
+  background-color: transparent;
+  height: auto;
+  width: 350px;
+  color: goldenrod;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.card__text{
+  font-family: Raleway;
+  background: rgb(14,30,37);
+  margin: 0;
+  padding: 0;
+}
+
+.card:hover{
+  opacity: 0.6;
+}
+
+h4{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.card img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  height: 150px;
+  object-fit: cover;
+}
+
+.loader__image{
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 50px auto;
 }
 
-.App-link {
-  color: #61dafb;
+.loader__image h4{
+  font-family: Raleway;
+  color: goldenrod;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.footer{
+  margin-top: 20px;
+  color: whitesmoke;
+}
+
+
+
+@media (max-width: 800px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 500px) {
+  .cards {
+    grid-template-columns: 1fr;
   }
 }
