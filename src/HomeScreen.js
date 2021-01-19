@@ -2,16 +2,31 @@ import React, { useEffect, useState } from 'react'
 import Pokemon from './components/Pokemon'
 import Loader from './components/Loader'
 import Footer from './components/Footer'
+import Search from './components/Search'
 import axios from "axios"
 import pokemon from "./Pokemon_logo.svg.png";
 
 const HomeScreen = () => {
     const [loading, setLoading] = useState(false)  
     const [pokemons, setPokemons] = useState([])
+    const [filteredContent, setFilteredContent] = useState([])
+ 
 
+    const searchPokemon = (searchQuery) => {
+        let filteredPokemons = []
+
+        // eslint-disable-next-line array-callback-return
+        pokemons.map((pokemon) => {
+            if(pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())){
+                filteredPokemons.push(pokemon)
+            }
+        })
+        setFilteredContent(filteredPokemons)
+
+    }
 
     useEffect(() => {
-        const getData =  async () =>{
+        const getData =  async () => {
             const poke = []
             const pokemonNumber = 300
             try{
@@ -22,6 +37,7 @@ const HomeScreen = () => {
                     setLoading(false)
                 }
                 setPokemons(poke)
+                setFilteredContent(poke)
 
             }catch(err){
                 console.log(err)
@@ -40,8 +56,9 @@ const HomeScreen = () => {
         
             {loading ? (<Loader/>) : (
             <>
+            <Search search={searchPokemon}/>
             <section className="cards">
-             <Pokemon pokemons={pokemons}/>
+             <Pokemon pokemons={filteredContent}/>
              </section>
              <Footer/>
             </>
