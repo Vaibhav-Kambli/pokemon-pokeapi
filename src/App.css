@@ -117,6 +117,7 @@ h4{
   display:flex;
   align-items: center;
   justify-content:center;
+  background: white;
 }
 
 .loader__image{
