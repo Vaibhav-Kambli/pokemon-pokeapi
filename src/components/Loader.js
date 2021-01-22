@@ -5,7 +5,7 @@ const Loader = () => {
 	return (
 		<div className="loader__image">
 			<img src={spinner} alt={"spinner"} />
-            <h4>Loading... </h4>
+            <h4>Loading please wait...</h4>
 		</div>
 	);
 };

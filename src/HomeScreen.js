@@ -15,8 +15,8 @@ const HomeScreen = () => {
     const searchPokemon = (searchQuery) => {
         let filteredPokemons = []
 
-        // eslint-disable-next-line array-callback-return
-        pokemons.map((pokemon) => {
+        
+        pokemons.forEach((pokemon) => {
             if(pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())){
                 filteredPokemons.push(pokemon)
             }
@@ -28,16 +28,16 @@ const HomeScreen = () => {
     useEffect(() => {
         const getData =  async () => {
             const poke = []
-            const pokemonNumber = 300
+            const pokemonNumber = 90
             try{
                 for(let i = 1; i <= pokemonNumber; i++){
                     setLoading(true)
                     const  {data}  = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
                     poke.push(data)
-                    setLoading(false)
                 }
                 setPokemons(poke)
                 setFilteredContent(poke)
+                setLoading(false)
 
             }catch(err){
                 console.log(err)
@@ -50,18 +50,20 @@ const HomeScreen = () => {
 
     return (
         <div className="container">
-            <div className="app__logo">
+            <header className="app__logo">
 				<img src={pokemon} alt={"pokemon"} />          
-			</div>
+			</header>
         
             {loading ? (<Loader/>) : (
-            <>
+            <div className="pokemon__container">
             <Search search={searchPokemon}/>
+            <div className="pokemon__list">
             <section className="cards">
              <Pokemon pokemons={filteredContent}/>
              </section>
+             </div>
              <Footer/>
-            </>
+            </div>
             )}
         
         </div>

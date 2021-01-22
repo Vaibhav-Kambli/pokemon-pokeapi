@@ -8,7 +8,7 @@ const Search = ({search}) => {
             <input 
                 type="text"
                 className="search__input"
-                placeholder="Search your Pokemon..."
+                placeholder="Search Pokemons"
                 onChange={(e) => search(e.target.value)}
                 autoFocus 
                 />
